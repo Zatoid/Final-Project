@@ -126,10 +126,14 @@ _TODO: Fill out the details below. Include screenshots where possible._
 
 The Red Team was able to penetrate `Target 1` and retrieve the following confidential data:
 - Target 1
-  - `flag1.txt`: _TODO: Insert `flag1.txt` hash value_
+  - `flag1.txt`: b9bbcb33e11b80be759c4e844862482d
     - **Exploit Used**
-      - _TODO: Identify the exploit used_
-      - _TODO: Include the command run_
+      - **Exploits**:
+        - Brute forcing weak password credentials
+        - Reading confidential files
+      - **Commands**:
+        - ssh michael@192.168.1.110
+        - cat /var/www/html/service.html
   - `flag2.txt`: _TODO: Insert `flag2.txt` hash value_
     - **Exploit Used**
       - _TODO: Identify the exploit used_
