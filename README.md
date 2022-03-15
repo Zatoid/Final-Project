@@ -14,22 +14,36 @@ This is a private github repository meant to submit all of my findings and answe
 _TODO: Fill out the information below._
 
 The following machines were identified on the network:
-- Name of VM 1
-  - **Operating System**:
-  - **Purpose**:
-  - **IP Address**:
-- Name of VM 2
-  - **Operating System**:
-  - **Purpose**:
-  - **IP Address**:
-- Etc.
+- TARGET1
+  - **Operating System**: Linux
+  - **Purpose**: Runs Apache webserver 
+  - **IP Address**:192.168.1.110
+- TARGET2
+  - **Operating System**: Linux
+  - **Purpose**: Runs Apache webserver
+  - **IP Address**:192.168.1.115
+- Kali
+  - **Operating System**: Linux
+  - **Purpose**: Attacking Machine
+  - **IP Address**: 192.168.1.90
+- Capstone
+  - **Operating System**: Linux
+  - **Purpose**: Runs Apache webserver
+  - **IP Address**: 192.168.1.105
+- ELK
+  - **Operating System**: Linux
+  - **Purpose**: Runs Elasticsearch on the target machines.
+  - **IP Address**: 19.168.1.100
 
 ### Description of Targets
 _TODO: Answer the questions below._
 
-The target of this attack was: `Target 1` (TODO: IP Address).
+The target of this attack was: `Target 1` 192.168.1.110.
 
 Target 1 is an Apache web server and has SSH enabled, so ports 80 and 22 are possible ports of entry for attackers. As such, the following alerts have been implemented:
+- **Excessive HTTP Errors**: WHEN count() GROUPED OVER top 5 'http.response.status_code' IS ABOVE 400 FOR THE LAST 5 minutes
+- **HTTP Request Size Monitor**: WHEN sum() of http.request.bytes OVER all documents IS ABOVE 3500 FOR THE LAST 1 minute
+- **CPU Usage Monitor**: WHEN max() OF system.process.cpu.total.pct OVER all documents IS ABOVE 0.5 FOR THE LAST 5 minutes
 
 ### Monitoring the Targets
 
