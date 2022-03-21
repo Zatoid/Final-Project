@@ -99,7 +99,7 @@ The following vulnerabilities were identified on each target:
   - Weak account credentials. We were able to easily guess Michaels account password which was just his name. Steven's password only took a few minutes to crack with John the Ripper.
   - Privilege escalation using a python script. This one I was able to find a CVE code on which is CVE-2006-0151. It has no official severity rating on nist.gov, however I would rate this as very severe. Escalating to root is the holy grail of all cyber attacks and to be able to do that from a user level with a simple python script is concerning.
 
-[vulnerability scan 1]()
+[vulnerability scan 1](https://github.com/Zatoid/Final-Project/blob/main/screenshots/vuln_scan_1.PNG)
 
 _TODO: Include vulnerability scan results to prove the identified vulnerabilities._
 
