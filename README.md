@@ -90,7 +90,7 @@ Nmap scan results for each machine reveal the below services and OS details:
 $ nmap -sV 192.168.1.110
   # TODO: Insert scan output
 ```
-![Command Output](Final-Project/screenshots/nmap_scan_against_target_vm.PNG)
+![Command Output](https://github.com/Zatoid/Final-Project/blob/main/screenshots/nmap_scan_against_target_vm.PNG)
 
 This scan identifies the services below as potential points of entry:
 - Target 1
