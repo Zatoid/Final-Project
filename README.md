@@ -49,45 +49,30 @@ Target 1 is an Apache web server and has SSH enabled, so ports 80 and 22 are pos
 
 Traffic to these services should be carefully monitored. To this end, we have implemented the alerts below:
 
-#### Name of Alert 1
-_TODO: Replace `Alert 1` with the name of the alert._
+#### Excessive HTTP Errors
 
-Alert 1 is implemented as follows:
-  - **Metric**: TODO
+
+Excessive HTTP Errors is implemented as follows:
+  - **Metric**: Number of HTTP error codes (400 and up).
+  - **Threshold**: Anything number of attempts that resulted in a 400 error code or above.
+  - **Vulnerability Mitigated**: Brute Force Vulnerabilities could be mitigated with this alert. Any excessive amount of failed logins could clearly be brute force attempts into the network.
+  - **Reliability**: This could cause some false negatives due to the error being set to trigger even one bad login attempt. However, it could prove valuable in monitoring overall failed attempts therefor making it difficult for successful brute force logins later on. I would rate this as medium reliability due to the sheer number of false alarms that would be created, however, it also does its job flawlessly in regards to alerting everytime a bad login is made, and in the process alerting for potential threat actor activity.
+
+#### HTTP Request Size Monitor
+HTTP Request Size Monitor is implemented as follows:
+  - **Metric**: The amount of HTTP requests in a set amount of time.
+  - **Threshold**: Anything above 3500 events in the last 1 minute would trigger the alert
+  - **Vulnerability Mitigated**: If there was a significant number of traffic that is directed towards a specific file on the webserver, that would alert the blue team of a potential malicious threat actor snooping around our file system trying to access confidential data.
+  - **Reliability**: TODO: Does this alert generate lots of false positives/false negatives? Rate as low, medium, or high reliability.
+
+#### CPU Usage Monitor
+CPU Usage Monitor is implemented as follows:
+  - **Metric**: CPU percentage use 
   - **Threshold**: TODO
   - **Vulnerability Mitigated**: TODO
   - **Reliability**: TODO: Does this alert generate lots of false positives/false negatives? Rate as low, medium, or high reliability.
 
-#### Name of Alert 2
-Alert 2 is implemented as follows:
-  - **Metric**: TODO
-  - **Threshold**: TODO
-  - **Vulnerability Mitigated**: TODO
-  - **Reliability**: TODO: Does this alert generate lots of false positives/false negatives? Rate as low, medium, or high reliability.
 
-#### Name of Alert 3
-Alert 3 is implemented as follows:
-  - **Metric**: TODO
-  - **Threshold**: TODO
-  - **Vulnerability Mitigated**: TODO
-  - **Reliability**: TODO: Does this alert generate lots of false positives/false negatives? Rate as low, medium, or high reliability.
-
-_TODO Note: Explain at least 3 alerts. Add more if time allows._
-
-### Suggestions for Going Further (Optional)
-_TODO_: 
-- Each alert above pertains to a specific vulnerability/exploit. Recall that alerts only detect malicious behavior, but do not stop it. For each vulnerability/exploit identified by the alerts above, suggest a patch. E.g., implementing a blocklist is an effective tactic against brute-force attacks. It is not necessary to explain _how_ to implement each patch.
-
-The logs and alerts generated during the assessment suggest that this network is susceptible to several active threats, identified by the alerts above. In addition to watching for occurrences of such threats, the network should be hardened against them. The Blue Team suggests that IT implement the fixes below to protect the network:
-- Vulnerability 1
-  - **Patch**: TODO: E.g., _install `special-security-package` with `apt-get`_
-  - **Why It Works**: TODO: E.g., _`special-security-package` scans the system for viruses every day_
-- Vulnerability 2
-  - **Patch**: TODO: E.g., _install `special-security-package` with `apt-get`_
-  - **Why It Works**: TODO: E.g., _`special-security-package` scans the system for viruses every day_
-- Vulnerability 3
-  - **Patch**: TODO: E.g., _install `special-security-package` with `apt-get`_
-  - **Why It Works**: TODO: E.g., _`special-security-package` scans the system for viruses every day_
 
 # Red Team: Summary of Operations
 
@@ -102,7 +87,7 @@ _TODO: Fill out the information below._
 Nmap scan results for each machine reveal the below services and OS details:
 
 ```bash
-$ nmap ... # TODO: Add command to Scan Target 1
+$ nmap -sV 192.168.1.110
   # TODO: Insert scan output
 ```
 
@@ -136,8 +121,8 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
         - cat /var/www/html/service.html
   - `flag2.txt`: fc3fd58dcdad9ab23faca6e9a36e581c
     - **Exploit Used**
-      - _TODO: Identify the exploit used_
-      - _TODO: Include the command run_
+      - _TODO: Brute forcing weak password credentials
+      - _TODO: Reading confidential file
   - `flag3.txt`: afc01ab56b50591e7dccf93122770cd2
     - **Exploit Used**
       - todo
