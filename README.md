@@ -102,7 +102,6 @@ The following vulnerabilities were identified on each target:
 
 
 ### Exploitation
-_TODO: Fill out the details below. Include screenshots where possible._
 
 The Red Team was able to penetrate `Target 1` and retrieve the following confidential data:
 - Target 1
@@ -114,20 +113,29 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
       - **Commands**:
         - ssh michael@192.168.1.110 password: michael
         - cat /var/www/html/service.html
-[]
+
+![flag 1](https://github.com/Zatoid/Final-Project/blob/main/screenshots/flag_1.PNG)
+
   - `flag2.txt`: fc3fd58dcdad9ab23faca6e9a36e581c
     - **Exploit Used**
-      - _TODO: Brute forcing weak password credentials
-      - _TODO: Reading confidential file
+      - **Exploits**
+        - Brute forcing weak password credentials
+        - Reading confidential file
       - **Commands**
         - ssh michael@192.168.1.110 password: michael
         - cat /var/www/flag2.txt
+
+![flag 2](https://github.com/Zatoid/Final-Project/blob/main/screenshots/flag_2.PNG)
+
   - `flag3.txt`: afc01ab56b50591e7dccf93122770cd2
     - **Exploit Used**
       - **Exploits**
         - Wordpress access due credentials being displayed in a publically accessible file.
       - **Commands**
         - Select * FROM wp_posts;
+
+![flag 3](https://github.com/Zatoid/Final-Project/blob/main/screenshots/flag_3_and_4.PNG)
+
   - `flag4.txt`: 715dea6c055b9fe3337544932f2941ce
     - **Exploit Used**
       - **Exploits**
@@ -139,3 +147,5 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
         - cd /
         - find -iname *flag*
         - cat flag4.txt
+
+![flag 4](https://github.com/Zatoid/Final-Project/blob/main/screenshots/flag_4.PNG)
