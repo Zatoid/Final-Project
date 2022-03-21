@@ -91,6 +91,7 @@ $ nmap -sV 192.168.1.110
   # TODO: Insert scan output
 ```
 
+
 This scan identifies the services below as potential points of entry:
 - Target 1
   - List of
