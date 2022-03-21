@@ -36,7 +36,6 @@ The following machines were identified on the network:
   - **IP Address**: 19.168.1.100
 
 ### Description of Targets
-_TODO: Answer the questions below._
 
 The target of this attack was: `Target 1` 192.168.1.110.
 
@@ -63,14 +62,14 @@ HTTP Request Size Monitor is implemented as follows:
   - **Metric**: The amount of HTTP requests in a set amount of time.
   - **Threshold**: Anything above 3500 events in the last 1 minute would trigger the alert
   - **Vulnerability Mitigated**: If there was a significant number of traffic that is directed towards a specific file on the webserver, that would alert the blue team of a potential malicious threat actor snooping around our file system trying to access confidential data.
-  - **Reliability**: TODO: Does this alert generate lots of false positives/false negatives? Rate as low, medium, or high reliability.
+  - **Reliability**: TODO: This could show a lot of false negatives if it just so happens to be a busy weekend and there is a lot of traffic flowing in and out of the webserver. However, on a regular basis, this would be reliable in that if there is an absurd amount of traffic being picked up by our web server at an unusual time especially, that tells me that something suspicious is likely occuring. I would rate this as highly reliable.
 
 #### CPU Usage Monitor
 CPU Usage Monitor is implemented as follows:
   - **Metric**: CPU percentage use 
-  - **Threshold**: TODO
-  - **Vulnerability Mitigated**: TODO
-  - **Reliability**: TODO: Does this alert generate lots of false positives/false negatives? Rate as low, medium, or high reliability.
+  - **Threshold**: Anything over .5% cpu being used on any file in the last 5 minutes.
+  - **Vulnerability Mitigated**: This mitigates any issues with an excess amount of traffic or data flowing into a file which could prevent possible threat actors from tampering with files without getting caught.
+  - **Reliability**: TODO: Normally I wouldn't expect file access and tampering to use up much CPU so I would rate this about medium reliability, this is because if something that is going to cause a significant amount of trouble is happening in our file system, I would expect higher CPU use than average. Only reason it isn't highly reliable is because sometimes hardware can effect how much CPU is being used, so if that hardware is outdated, it could potentially give you false negatives.
 
 
 
@@ -82,28 +81,25 @@ CPU Usage Monitor is implemented as follows:
 - Exploitation
 
 ### Exposed Services
-_TODO: Fill out the information below._
 
 Nmap scan results for each machine reveal the below services and OS details:
 
-```bash
-$ nmap -sV 192.168.1.110
-  # TODO: Insert scan output
-```
 ![Command Output](https://github.com/Zatoid/Final-Project/blob/main/screenshots/nmap_scan_against_target_vm.PNG)
 
 This scan identifies the services below as potential points of entry:
 - Target 1
-  - List of
-  - Exposed Services
+  - Port 22 SSH
+  - Port 80 HTTP
 
 _TODO: Fill out the list below. Include severity, and CVE numbers, if possible._
 
 The following vulnerabilities were identified on each target:
 - Target 1
-  - List of
-  - Critical
-  - Vulnerabilities
+  - Wordpress vulnerability in which we input a wordpress command against the web server IP and enumerated the user info as well as their credentials.
+  - Weak account credentials. We were able to easily guess Michaels account password which was just his name. Steven's password only took a few minutes to crack with John the Ripper.
+  - Privilege escalation using a python script. This one I was able to find a CVE code on which is CVE-2006-0151. It has no official severity rating on nist.gov, however I would rate this as very severe. Escalating to root is the holy grail of all cyber attacks and to be able to do that from a user level with a simple python script is concerning.
+
+[vulnerability scan 1]()
 
 _TODO: Include vulnerability scan results to prove the identified vulnerabilities._
 
