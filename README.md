@@ -61,14 +61,14 @@ HTTP Request Size Monitor is implemented as follows:
   - **Metric**: http.request.bytes: The amount of HTTP requests or rather the size of the requests in a set amount of time.
   - **Threshold**: Anything above 3500 events in the last 1 minute would trigger the alert
   - **Vulnerability Mitigated**: If there was a significant number of traffic that is directed towards a specific file on the webserver, that would alert the blue team of a potential malicious threat actor snooping around our file system trying to access confidential data.
-  - **Reliability**: TODO: This could show a lot of false negatives if it just so happens to be a busy weekend and there is a lot of traffic flowing in and out of the webserver. However, on a regular basis, this would be reliable in that if there is an absurd amount of traffic being picked up by our web server at an unusual time especially, that tells me that something suspicious is likely occuring. I would rate this as highly reliable.
+  - **Reliability**: This could show a lot of false negatives if it just so happens to be a busy weekend and there is a lot of traffic flowing in and out of the webserver. However, on a regular basis, this would be reliable in that if there is an absurd amount of traffic being picked up by our web server at an unusual time especially, that tells me that something suspicious is likely occuring. I would rate this as highly reliable.
 
 #### CPU Usage Monitor
 CPU Usage Monitor is implemented as follows:
   - **Metric**: system.process.cpu.total.pct: CPU percentage use 
   - **Threshold**: Anything over .5% cpu being used on any file in the last 5 minutes.
   - **Vulnerability Mitigated**: This mitigates any issues with an excess amount of traffic or data flowing into a file which could prevent possible threat actors from tampering with files without getting caught.
-  - **Reliability**: TODO: Normally I wouldn't expect file access and tampering to use up much CPU so I would rate this about medium reliability, this is because if something that is going to cause a significant amount of trouble is happening in our file system, I would expect higher CPU use than average. Only reason it isn't highly reliable is because sometimes hardware can effect how much CPU is being used, so if that hardware is outdated, it could potentially give you false negatives.
+  - **Reliability**: Normally I wouldn't expect file access and tampering to use up much CPU so I would rate this about medium reliability, this is because if something that is going to cause a significant amount of trouble is happening in our file system, I would expect higher CPU use than average. Only reason it isn't highly reliable is because sometimes hardware can effect how much CPU is being used, so if that hardware is outdated, it could potentially give you false negatives.
 
 
 
